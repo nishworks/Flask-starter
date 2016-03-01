@@ -7,7 +7,7 @@ import urllib
 from flask.ext.script import Command, Option
 from flask.ext.script import Manager
 
-from market import app
+from flask_app import app
 from config import APP_DIR, FLASK_APP_NAME, HOST, PORT, WORKERS
 
 __doc__ = """
@@ -30,7 +30,8 @@ manager = Manager(app)
 
 class GunicornServer(Command):
     """
-        Multi-threaded Flask server. Run the app within Gunicorn
+        WSGI compliant server
+        Gunicorn can spawn multiple flask instances
     """
 
     def __init__(self):
@@ -38,7 +39,7 @@ class GunicornServer(Command):
 
     def get_options(self):
         return (
-            Option('-t', '--host',
+            Option('-h', '--host',
                    dest='host',
                    default=HOST),
 
@@ -53,10 +54,10 @@ class GunicornServer(Command):
                    default=WORKERS),
         )
 
-    def run(self, *args, **kwargs):
-        run_args = sys.argv[2:]
+    def run(self, host, port, workers):
         app_name = '%s:%s' % (APP_DIR, FLASK_APP_NAME)
-        run_args.append(app_name)
+        address = '{0}:{1}'.format(host, port)
+        run_args = ['-b', address, '-w', str(workers), app_name]
         os.execvp('gunicorn', [''] + run_args)
 
 

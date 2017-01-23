@@ -1,0 +1,14 @@
+<div class="btn-group">
+    <button type="button" class="btn {[{ btnClass }]} dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+        {[{ stateParams[paramName] || paramName }]} <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu small">
+        <li ng-if="displayAllFilter" ng-click="paramChangeCallback({name: paramName, value: null})">
+            <a> all </a>
+        </li>
+        <li ng-repeat="value in paramValues" ng-click="paramChangeCallback({name: paramName, value: value})">
+            <a>{[{ value }]}</a>
+        </li>
+    </ul>
+</div>

@@ -18,15 +18,17 @@ This is an easy to use broilerplate to get productive with flask right away.
       * Activate virtual environment `source activate`
       * Run server `python manage.py runserver` or live reload with `python manage.py runserver`
       * You can also just do `cd flask_app && python __init__.py` if you don't want gunicorn
-
+  
+  * **Pycharm**
+      * Setup project interpreter in Pycharm->Preferences->Project Interpreter
+      * Interpreter is located in .tox directory which is hidden, on Mac this could be a problem since
+        Finder won't show hidden folders and pycharm won't let you add path manually. Don't panic, when pycharm
+        opens Finder dialogue to enable selection of interpreter, just do CMD + SHIFT + G to enter path 
+        or CMD + SHIFT + . to show hidden files :)
+  
   * **Dependencies:**
     * Python dependencies are specified in requirements.txt
     * Whenever a new package is added to requirements.txt, please add package over there with description.
-
-## Documentation
-  * Documentation is rebuilt on readthedocs.org whenever a commit is pushed to this repository.
-  * You would need to create an account on readthedocs.org and add service to your github account to have the same functionality.
-
 
 ## Development Guide:
 

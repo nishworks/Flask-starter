@@ -1,0 +1,9 @@
+<div class="btn-group {[{ btnGroupClasses }]}" role="group" aria-label="...">
+    <button type="button"
+            ng-repeat="value in paramValues"
+            class="btn {[{ btnClass }]} small"
+            ng-class="{active : stateParams[paramName] == value}"
+            ng-click="paramChangeCallback({name: paramName, value: value})">
+        {[{ value }]}
+    </button>
+</div>

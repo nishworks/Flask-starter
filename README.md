@@ -4,50 +4,28 @@ This is an easy to use broilerplate to get productive with flask right away.
 
 
 ## Setup Guide:
-  * You should have these installed:  **python 2.7+** and **pip**
-  * **Tox Installation** (try with sudo if there is a permission error):
-                ```
-                pip install tox
-                ```
+  * You should have these installed:
+      * python 3.5.x - Use official python installer (https://www.python.org/downloads/release/python-353/)
+      * pip  `sudo easy_install pip`
+      * tox  `pip install tox`
+
   * **Project setup**
-                ```
-                source setup.sh
-                ```
-    * Following commands will be available after setup:
+      * `./setup.sh` to setup the python virtual environment - put all setup steps here
+      * To build docs - `source activate && cd docs && make html && cd ..`
+      * Make sure your virtual environment is activated while you are developing on this project
 
+  * **Development**
+      * Activate virtual environment `source activate`
+      * Run server `python manage.py runserver` or live reload with `python manage.py runserver`
+      * You can also just do `cd flask_app && python __init__.py` if you don't want gunicorn
 
-    | Command    | Description                            |
-    |------------|----------------------------------------|
-    | run        | Executes python manage.py runserver -r |
-    | doc        | Opens documentation in a browser       |
-    | fspace     | cd into this directory from anywhere   |
-    | activate   | Activates the virtual environment      |
-    | deactivate | Deactivates the virtual environment    |
-
-      Above commands can be run from any directory
-
-  * **Starting the server**
-                ```
-                python manage.py runserver
-                ```
   * **Dependencies:**
     * Python dependencies are specified in requirements.txt
-    * Whenever a new package is added to requirements.txt, please add description/need for it here.
-       * gunicorn -  Runs multiple instances of our Flask server (for scalability)
-       * Flask - (The micro web-framework)
-       * Flask-Script (Required for manage.py command CLI)
-       * Flask-SQLAlchemy  (Useful utilities over SQL-Alchemy for use in Flask)
-       * SQLAlchemy==1.0  (Object-Relational-Mapper)
-       * ipython (Nice alternative to official python shell)
-       * Jinja2  (Templating engine)
-       * requests ( HTTP library)
-       * sphinx (Documentation tool)
-       * sphinx_rtd_theme (Theme for sphinx)
-
+    * Whenever a new package is added to requirements.txt, please add package over there with description.
 
 ## Documentation
   * Documentation is rebuilt on readthedocs.org whenever a commit is pushed to this repository.
-  * You need to create an account on readthedocs.org and add service to your github account.
+  * You would need to create an account on readthedocs.org and add service to your github account to have the same functionality.
 
 
 ## Development Guide:

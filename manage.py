@@ -4,8 +4,7 @@ import os
 import sys
 import urllib
 
-from flask.ext.script import Command, Option
-from flask.ext.script import Manager
+from flask_script import Command, Option, Manager
 
 from flask_app import app
 from config import APP_DIR, FLASK_APP_NAME, HOST, PORT, WORKERS
@@ -55,8 +54,8 @@ class GunicornServer(Command):
         )
 
     def run(self, host, port, workers):
-        app_name = '%s:%s' % (APP_DIR, FLASK_APP_NAME)
-        address = '{0}:{1}'.format(host, port)
+        app_name = '{}:{}'.format(APP_DIR, FLASK_APP_NAME)
+        address = '{}:{}'.format(host, port)
         run_args = ['-b', address, '-w', str(workers), app_name]
         os.execvp('gunicorn', [''] + run_args)
 
@@ -72,7 +71,7 @@ def routes():
     output = []
     for rule in app.url_map.iter_rules():
         methods = ','.join(rule.methods)
-        line = urllib.unquote("{:50s} {:20s} {}".format(rule.endpoint, methods, rule))
+        line = "{:50s} {:20s} {}".format(rule.endpoint, methods, rule)
         output.append(line)
     for line in sorted(output):
         print(line)
@@ -84,10 +83,10 @@ def config():
         Lists config defined in application
     """
     keys = sorted(app.config.keys())
-    print '\n----------------- Config -------------------\n'
+    print('\n----------------- Config -------------------\n')
     for key in keys:
-        print "{0:40s} {1}".format(key, app.config[key])
-    print '\n'
+        print("{0:40s} {1}".format(key, app.config[key]))
+    print('\n')
 
 
 @manager.command
@@ -95,8 +94,8 @@ def dirs():
     """
         Lists all important dirs in the project
     """
-    print "{0:20s} {1}".format("Template Dir: ", app.template_folder)
-    print "{0:20s} {1}".format("Uploads Dir: ", app.config.get('UPLOAD_FOLDER'))
+    print("{0:20s} {1}".format("Template Dir: ", app.template_folder))
+    print("{0:20s} {1}".format("Uploads Dir: ", app.config.get('UPLOAD_FOLDER')))
 
 if __name__ == "__main__":
     manager.run()

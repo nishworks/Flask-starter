@@ -1,8 +1,3 @@
-# -*-coding:utf8-*-
-
-from flask import Flask, render_template
-app = Flask(__name__)
-
 __doc__ = """
 
         http://flask.pocoo.org/docs/0.10/quickstart/
@@ -11,6 +6,16 @@ __doc__ = """
         Notice how we directly return string in hello_world example
 """
 
+import logging
+
+from flask import Flask, render_template
+from flask_app import utils
+
+utils.setup_root_logger_handler()
+app = Flask(__name__)
+
+
+log = logging.getLogger(__name__)
 
 @app.route('/simple')
 def template_example():
@@ -18,6 +23,7 @@ def template_example():
 
 @app.route('/')
 def hello_world():
+    log.info('Root path')
     return 'Hello World! <br /> <a href="simple"> Simple template </a>'
 
 if __name__ == '__main__':

@@ -6,9 +6,6 @@ Flask-SQLAlchemy==2.1
 Flask-RESTful==0.3.5
 Flask-Assets==0.12
 
-# XML parsing
-lxml==3.7.2
-
 # Timezone support
 pytz==2016.10
 
@@ -24,12 +21,6 @@ pep8
 # CLI
 click
 
-# PostgresSql driver (wrapper for libpq, the official PostgreSQL client library)
-psycopg2==2.6.2
-
 # ORM for interacting with database
 SQLAlchemy==1.1.4
 
-# Lsphinx_rtd_themeibraries for documentation
-sphinx
-sphinx-autobuild
